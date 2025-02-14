@@ -1,0 +1,92 @@
+Got it! Since FlexiFunnels doesn't allow direct code editing, you'll need a **workaround** to fetch TMSearch API data and display it dynamically.  
+
+### **Alternative Approach: Using Google Sheets as a Bridge**
+Since you can’t run JavaScript in FlexiFunnels, we'll use **Google Sheets + Google Apps Script** to fetch data from the TMSearch API and display it inside FlexiFunnels.  
+
+#### **How This Works:**
+1. **User enters a trademark name in the FlexiFunnels search field.**  
+2. **FlexiFunnels sends the search term to Google Sheets (via a webhook or Google Forms).**  
+3. **Google Apps Script fetches data from the TMSearch API and stores it in Sheets.**  
+4. **FlexiFunnels embeds the Google Sheet (styled) to show results.**  
+
+---
+
+### **Step-by-Step Setup:**
+#### **1️⃣ Create a Google Sheet for Trademark Results**
+- Name it **"Trademark Search Results"**  
+- Add headers: **Trademark Name | Status | Owner | Class | Registration Date**  
+
+---
+
+#### **2️⃣ Set Up Google Apps Script to Fetch API Data**
+- Open Google Sheets → Click **Extensions → Apps Script**  
+- Replace the existing code with this:
+
+  ```javascript
+  function fetchTrademarkData(trademarkName) {
+      var apiUrl = "YOUR_TMSEARCH_API_URL?query=" + encodeURIComponent(trademarkName);
+      var response = UrlFetchApp.fetch(apiUrl);
+      var data = JSON.parse(response.getContentText());
+
+      var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Sheet1"); // Change to your sheet name
+      sheet.clear(); // Clear previous results
+
+      sheet.appendRow(["Trademark Name", "Status", "Owner", "Class", "Registration Date"]); // Headers
+
+      if (data.results && data.results.length > 0) {
+          data.results.forEach(function(trademark) {
+              sheet.appendRow([
+                  trademark.name,
+                  trademark.status,
+                  trademark.owner,
+                  trademark.class,
+                  trademark.registration_date
+              ]);
+          });
+      } else {
+          sheet.appendRow(["No results found"]);
+      }
+  }
+  ```
+
+- **Replace** `"YOUR_TMSEARCH_API_URL"` with your API endpoint.  
+- Save and **deploy it as a web app** (accessible to anyone).  
+
+---
+
+#### **3️⃣ Connect FlexiFunnels Search Field to Google Sheets**
+Since we can’t run JavaScript, we’ll **capture user input via a Google Form or webhook**:
+- Create a **Google Form** linked to your Google Sheet.  
+- In FlexiFunnels, embed the form URL so users can submit their search queries.  
+- Use **Google Apps Script (Trigger on Form Submit)** to automatically run `fetchTrademarkData()` when a new search query is entered.  
+
+---
+
+#### **4️⃣ Display the Results in FlexiFunnels**
+- Publish the **Google Sheet as a web page** (`File → Share → Publish to the web`).  
+- Embed it in FlexiFunnels using an **iframe**:
+
+  ```html
+  <iframe src="YOUR_GOOGLE_SHEET_EMBED_URL" width="100%" height="500px"></iframe>
+  ```
+
+---
+
+### **Final User Experience in FlexiFunnels**
+1. **User enters a trademark name in the search field (Google Form in FlexiFunnels).**  
+2. **Data is sent to Google Sheets, which triggers the API fetch automatically.**  
+3. **The results appear in FlexiFunnels via an embedded Google Sheet.**  
+
+---
+
+### **Limitations & Workarounds**
+❌ **Slight Delay** (~1-2 sec) due to Google Sheets processing.  
+✅ **Can Be Styled** using Google Sheets formatting.  
+✅ **No Need for FlexiFunnels Code Edits.**  
+
+---
+
+### **Next Steps**
+1. Try setting up Google Sheets + Apps Script.  
+2. Embed the Sheet in FlexiFunnels and test it.  
+3. Let me know if you need help debugging! 🚀
