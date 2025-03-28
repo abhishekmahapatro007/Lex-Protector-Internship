@@ -31,10 +31,11 @@ We are currently using **Systeme.io** for hosting our pages but are transitionin
   3. **"Live Webinar"** → Leads to a webinar registration page.  
 
 #### **Completed Work:**  
-✅ [UK Trademark Filing Website](https://uktrademark.lexprotector.com)  
+✅ [UK Trademark Filing Website](https://uktrademark.lexprotector.com/uktm)  
 ✅ [UK Webinar Page](https://uk.lexprotector.com/ukwebinar)  
-✅ [Flexifunnels Page](https://dwwbzd.flexifunnels.com/wxppdsfc)  
-✅ **Automated Trademark Search Workflow** using **n8n** in **Bubble.io**  
+✅ [Lex DMCA US Page](https://dwwbzd.flexifunnels.com/wxppdsfc)  
+✅ **Automated Trademark Search Workflow** using **n8n** in **Bubble.io** 
+✅ [UK Trademark Search and Automated Report made on Bubble](https://uktrademark.lexprotector.com/search)  
 
 #### **Skills Acquired:**  
 - **Bubble.io** – For building and automating workflows.  
@@ -43,4 +44,3 @@ We are currently using **Systeme.io** for hosting our pages but are transitionin
 
 ---
 
-This version is more structured and polished while keeping all the important details intact. Let me know if you need any modifications! 🚀
