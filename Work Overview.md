@@ -35,6 +35,7 @@ We are currently using **Systeme.io** for hosting our pages but are transitionin
 ✅ [UK Webinar Page](https://uk.lexprotector.com/ukwebinar)  
 ✅ [Lex DMCA US Page](https://dwwbzd.flexifunnels.com/wxppdsfc)  
 ✅ **Automated Trademark Search Workflow** using **n8n** in **Bubble.io** 
+
 ✅ [UK Trademark Search and Automated Report made on Bubble](https://uktrademark.lexprotector.com/search)  
 
 #### **Skills Acquired:**  
